@@ -66,7 +66,7 @@ export class AppComponent implements OnInit{
     })
    
   }
-  deleteproduct(id:number){//deleting the product based on given id which is mentioned in service as an argument in delete method
+  deleteproduct(id:number){//deleting the user based on given id which is mentioned in service as an argument in delete method
     this.api.deleteProduct(id)//deleting the paticular user id
     .subscribe({//make it as an observable instance
       next:(res)=>{
