@@ -1,0 +1,62 @@
+<!-- <p>createuser works!</p> -->
+<h1 mat-dialog-title style="text-align:center;color: #8A2BE2;border-radius:10px">Create User</h1>
+<div mat-dialog-content>
+   <form [formGroup]="productForm">
+    <!-- binding the form -->
+    <mat-form-field appearance="outline">
+        <mat-label>User Name</mat-label>
+        <input formControlName="Username" matInput placeholder="Enter UserName">
+      </mat-form-field>
+
+      <!-- category picker -->
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category" placeholder="Select Category">
+            <!-- mat select and options -->
+            <mat-option value="Operational Manager">Operational Manager</mat-option>
+            <mat-option value="Angular Js Developer">Angular Js Developer</mat-option>
+            <mat-option value="ReactJs Developer">ReactJs Developer</mat-option>
+            <mat-option value="PHP Developer">PHP Developer</mat-option>
+        </mat-select>
+      </mat-form-field>
+     
+      <!-- date picker -->
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a Date<sup style="size:20px">*</sup></mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+        <input formControlName="date" matStartDate placeholder="Start date">
+        <input formControlName="date" matEndDate placeholder="End date">
+        </mat-date-range-input>        
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+     
+     
+      
+      <label for="" style="font-size:15px">Experience</label>
+      <mat-radio-group class="example-radio-group"  formControlName="experience">
+        <mat-radio-button *ngFor="let fresh of freshness" [value]="fresh"  class="example-radio-button">
+            {{fresh}}
+            <!-- interpolating the fresh for getting array values -->
+
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field appearance="outline">
+                <!-- Appearance is outlinetype and filltype -->
+
+        <mat-label>Salary</mat-label>
+        <input  formControlName="salary" matInput type="number" placeholder="Enter Salary">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>About</mat-label>
+        <textarea  formControlName="about" matInput></textarea>
+      </mat-form-field>
+      
+   </form>
+      
+</div>
+<div mat-dialog-action [align]="'end'" style="padding-left:240px">
+    <button mat-raised-button color="warn" mat-dialog-close>close</button>
+    <button style="margin-left: 8px;"mat-raised-button color="primary" (click)="addproduct()" >{{actionBtn}}</button>
+    <!-- Add productmethod for adding product -->
+</div>

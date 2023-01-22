@@ -1,0 +1,34 @@
+{
+  "createuser": [
+    {
+      "Username": "re",
+      "category": "Angular Js Developer",
+      "date": "2023-01-05T18:30:00.000Z",
+      "experience": "Trainee",
+      "salary": 90,
+      "about": "new employee",
+      "id": 1
+    },
+    {
+      "Username": "revathi",
+      "category": "Operational Manager",
+      "date": "2023-01-10T18:30:00.000Z",
+      "experience": "Fresher",
+      "salary": 90,
+      "about": "gresher",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "typicode"
+    }
+  ]
+}

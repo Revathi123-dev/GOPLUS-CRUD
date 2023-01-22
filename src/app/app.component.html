@@ -1,0 +1,108 @@
+<mat-toolbar style="background-color:#A4DEB7" >
+ <img src="https://go-plus.io/wp-content/uploads/2022/02/Exam-logo.png" style="width: 64px;
+ color: white;
+ color: white;
+ margin-left: 573px;">&nbsp;&nbsp;
+
+  <span style="color:#8A2BE2">Data Entry</span>
+  <span class="example-spacer"></span>
+  <!-- <button mat-raised-button color="warn" (click)="openDialog()">add</button> -->
+ 
+</mat-toolbar>
+<button mat-raised-button  (click)="openDialog()" style="margin-left: 608px;
+margin-top: 28px;border-radius: 10px;background-color: #5050DB;color:white">
+<!-- open dialog for createuser component -->
+<b style="font-size:16px">Create a New User</b></button>
+
+<div class="container">
+  <div style="margin-top:10px">
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+    
+        <!-- ID Column -->
+        <ng-container matColumnDef="Username">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> User Name</th>
+          <td mat-cell *matCellDef="let row"> {{row.Username}} </td> 
+          <!-- using interpolation for getting row data1 -->
+        </ng-container>
+    
+        <!-- category Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+          <td mat-cell *matCellDef="let row"> {{row.category}} </td>
+                    <!-- using interpolation for getting row data2 -->
+
+        </ng-container>
+    
+        <!-- date Column -->
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+          <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
+                    <!-- using interpolation for getting row data3 
+                    and also use pipe for converting the date into specifid date-->
+
+        </ng-container>
+    
+        <!-- experience Column -->
+        <ng-container matColumnDef="experience">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Experience </th>
+          <td mat-cell *matCellDef="let row"> {{row.experience}} </td>
+                    <!-- using interpolation for getting row data4 -->
+        </ng-container>
+
+        <!-- salary Column -->
+
+        <ng-container matColumnDef="salary">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Salary</th>
+          <td mat-cell *matCellDef="let row"> {{row.salary |  currency:'INR':true}} </td>
+                              <!-- using interpolation for getting row data4  ad convert currency into indian rupees-->
+
+        </ng-container>
+
+         <!-- About Column -->
+        <ng-container matColumnDef="about">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>About</th>
+          <td mat-cell *matCellDef="let row"> {{row.about}}
+                                <!-- using interpolation for getting row data5 -->
+ </td>
+        </ng-container>
+
+                <!-- Action Column -->
+
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+          <td mat-cell *matCellDef="let row"> 
+            <button mat-icon-button color="primary" (click)="editProduct(row)">
+              <mat-icon>edit</mat-icon>
+              <!-- used mat-icon to edit data -->
+            </button>
+            <button mat-icon-button color="warn" 
+            (click)="deleteproduct(row.id)">
+              <mat-icon>delete</mat-icon>
+              <!-- used delete data for delete data -->
+            </button>
+          </td>
+
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users">
+        <!-- paginator that consists how many values to be selcted by the user. one way binding for pagesize of options. -->
+      </mat-paginator>
+    </div>
+    
+    </div>
+</div>
